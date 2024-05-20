@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>QUIERO JUGAR</pattern>
+        <think><set name="puntosUsuario"></set></think>
+        <think><set name="puntosBot"></set></think>
+        <think><set name="juagadaBot">
+                <random>
+                    <li>PIEDRA</li>
+                    <li>PAPEL</li>
+                    <li>TIJERA</li>
+                </random></set>
+            </think>
+        <template>De acuerdo, empiezo yo. Elijo: <get name="juagadaBot"></get></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <think><set name="jugadaUsuario"><star /></set></think>
+            <condition name="jugadaUsuario">
+                <li value="Dime la puntuación">
+                    Tu puntuación: <get name="puntosUsuario"></get><br />
+                    Mi puntuación: <get name="puntosBot"></get>
+                </li>
+                <li value="terminar">
+                    Juego acabado!
+                    <think><set name="puntosBot">0</set></think>
+                    <think><set name="puntosUsuario">0</set></think>
+                </li>
+                <li>
+                    <condition name="juagadaBot">
+                <li value="PIEDRA">
+                    Yo elijo PIEDRA. Tú has elegido <star/>.
+                    <condition name="jugadaUsuario">
+                        <li value="PIEDRA"> Es un empate.</li>
+                        <li value="PAPEL"> Ganas tú. ¡Yo pierdo!
+                            <condition name="puntosUsuario">
+                                <li value="0"><think><set name="puntosUsuario">1</set></think></li>
+                                <li value="1"><think><set name="puntosUsuario">2</set></think></li>
+                                <li value="2"><think><set name="puntosUsuario">3</set></think></li>
+                                <li value="3"><think><set name="puntosUsuario">4</set></think></li>
+                                <li value="4"><think><set name="puntosUsuario">5</set></think></li>
+                                <li value="5"><think><set name="puntosUsuario">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                        <li value="TIJERA"> Gano yo. ¡Tú pierdes!
+                            <condition name="puntosBot">
+                                <li value="0"><think><set name="puntosBot">1</set></think></li>
+                                <li value="1"><think><set name="puntosBot">2</set></think></li>
+                                <li value="2"><think><set name="puntosBot">3</set></think></li>
+                                <li value="3"><think><set name="puntosBot">4</set></think></li>
+                                <li value="4"><think><set name="puntosBot">5</set></think></li>
+                                <li value="5"><think><set name="puntosBot">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                    </condition>
+                </li>
+                <li value="PAPEL">
+                    Yo elijo PAPEL. Tú has elegido <star/>.
+                    <condition name="jugadaUsuario">
+                        <li value="PAPEL"> Es un empate.</li>
+                        <li value="TIJERA"> Ganas tú. ¡Yo pierdo!
+                            <condition name="puntosUsuario">
+                                <li value="0"><think><set name="puntosUsuario">1</set></think></li>
+                                <li value="1"><think><set name="puntosUsuario">2</set></think></li>
+                                <li value="2"><think><set name="puntosUsuario">3</set></think></li>
+                                <li value="3"><think><set name="puntosUsuario">4</set></think></li>
+                                <li value="4"><think><set name="puntosUsuario">5</set></think></li>
+                                <li value="5"><think><set name="puntosUsuario">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                        <li value="PIEDRA"> Gano yo. ¡Tú pierdes!
+                            <condition name="puntosBot">
+                                <li value="0"><think><set name="puntosBot">1</set></think></li>
+                                <li value="1"><think><set name="puntosBot">2</set></think></li>
+                                <li value="2"><think><set name="puntosBot">3</set></think></li>
+                                <li value="3"><think><set name="puntosBot">4</set></think></li>
+                                <li value="4"><think><set name="puntosBot">5</set></think></li>
+                                <li value="5"><think><set name="puntosBot">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                    </condition>
+                </li>
+                <li value="TIJERA">
+                    Yo elijo TIJERA. Tú has elegido <star/>.
+                    <condition name="jugadaUsuario">
+                        <li value="TIJERA"> Es un empate.</li>
+                        <li value="PIEDRA"> Ganas tú. ¡Yo pierdo!
+                            <condition name="puntosUsuario">
+                                <li value="0"><think><set name="puntosUsuario">1</set></think></li>
+                                <li value="1"><think><set name="puntosUsuario">2</set></think></li>
+                                <li value="2"><think><set name="puntosUsuario">3</set></think></li>
+                                <li value="3"><think><set name="puntosUsuario">4</set></think></li>
+                                <li value="4"><think><set name="puntosUsuario">5</set></think></li>
+                                <li value="5"><think><set name="puntosUsuario">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                        <li value="PAPEL"> Gano yo. ¡Tú pierdes!
+                            <condition name="puntosBot">
+                                <li value="0"><think><set name="puntosBot">1</set></think></li>
+                                <li value="1"><think><set name="puntosBot">2</set></think></li>
+                                <li value="2"><think><set name="puntosBot">3</set></think></li>
+                                <li value="3"><think><set name="puntosBot">4</set></think></li>
+                                <li value="4"><think><set name="puntosBot">5</set></think></li>
+                                <li value="5"><think><set name="puntosBot">5 o más</set></think></li>
+                            </condition>
+                        </li>
+                    </condition>
+                </li>
+            </condition>
+            </li>
+            </condition>
+        </template>
+    </category>
+</aiml>
